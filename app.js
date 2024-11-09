@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-//const cors = require('cors');
+const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const app = express();
@@ -34,9 +34,9 @@ async function generateAnswer(prompt) {
 }
 
 app.use(express.json());
-//app.use(cors({
-//  origin: 'https://cmsp.ip.tv'
-//}));
+app.use(cors({
+  origin: 'https://cmsp.ip.tv'
+}));
 
 app.post('/getAnswer', async (req, res) => {
   try {
